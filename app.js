@@ -57,4 +57,4 @@ function getItem (items, id) {
   return matchingItems[0]
 }
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
