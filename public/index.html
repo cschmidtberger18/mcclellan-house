@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <title>McClellan</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+        <link href="/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="navbar">
+                <div class="link-container">
+                    <a href="/" class="navbar-link">
+                        <img src="/thistle.gif" class="logo">
+                        <h3 class="brand" v-html="title"></h3>
+                    </a>
+                </div>
+                <button class="search-button">
+                    <i class="fa fa-search search-icon"></i>
+                </button>
+            </nav>
+            <section class="blog">
+                <h3 class="section-title">Blog Posts</h3>
+                <ul class="list-items">
+                    <li class="list-item" v-for="post in blogPosts">
+                        <a v-bind:href="'/blog/' + post.id"><h4 class="post-title" v-html="post.title"></h4></a>
+                        <p class="post-subtitle">By: {{post.author}}, {{prettyDate(post.date)}}</p>
+                        <p class="post-blurb" v-html="post.blurb"></p>
+                    </li>
+                </ul>
+            </section>
+            <section class="calendar">
+                <h3 class="section-title">Events</h3>
+                <ul class="list-items">
+                    <li class="list-item" v-for="event in events">
+                        <a v-bind:href="'/events/' + event.id"><h4 class="event-title" v-html="event.title"></h4></a>
+                        <p class="event-location">At: {{event.location}}</p>
+                        <p class="event-time" v-html="prettyTimeAndDate(event.time)"></p>
+                    </li>
+                </ul>
+            </section>
+            <section class="directory">
+                <h3 class="section-title" v-html="about.title"></h3>
+                <p class="about-paragraph" v-html="about.paragraph"></p>
+                <div class="about-link-container">
+                    <a class="about-link" href="/directory" v-html="about.linkLabel"></a>
+                </div>
+            </section>
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="/app.vue.js"></script>
+    </body>
+</html>
